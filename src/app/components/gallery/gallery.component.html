@@ -1,0 +1,78 @@
+<div class="gallery-page">
+  <!-- Header & Search -->
+  <header class="page-header py-5">
+    <div class="container text-center">
+      <h2 class="display-4 fw-bold mb-4">Visual Inspiration</h2>
+      <p class="text-muted lead mb-5">Discover breathtaking photography from creators around the world.</p>
+
+      <div class="search-wrapper shadow-lg animate-slide-up mx-auto" style="max-width: 700px;">
+        <div class="p-3">
+          <div class="input-group-custom">
+            <i class="bi bi-search"></i>
+            <input type="text" class="form-control-custom" [value]="searchQuery()"
+              placeholder="Search for photos (e.g. 'Ocean', 'Modern Architecture')..."
+              (input)="onSearchChange($event)">
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Categories -->
+      <div class="categories-nav mt-4 d-flex justify-content-center flex-wrap gap-2">
+        @for (cat of categories; track cat) {
+        <button class="category-pill" [class.active]="searchQuery() === cat" (click)="setCategory(cat)">
+          {{ cat }}
+        </button>
+        }
+      </div>
+    </div>
+  </header>
+
+  <!-- Gallery Content -->
+  <main class="container-fluid px-4 py-5">
+    @if (allPhotos().length === 0 && pageLoaded() && !isLoading()) {
+    <div class="empty-state text-center py-5">
+      <i class="bi bi-image display-1 text-muted mb-4 d-block"></i>
+      <h3 class="fw-bold">No photos found</h3>
+      <p class="text-muted">Try a different search term or category.</p>
+    </div>
+    }
+
+    <div class="GridLayout_section">
+      @for (column of columns(); track $index) {
+      <div class="GridLayout_column">
+        @for (item of column; track item.id) {
+        <div class="GridLayout_item">
+          <div class="MediaCard_cardWrapper">
+            <article class="MediaCard_card" [style.--aspect-ratio]="item.aspectRatio"
+              [style.--bg-color]="item.avg_color">
+              <a [href]="item.url" target="_blank" class="MediaCard_content">
+                <img [src]="item.src.large2x" [alt]="item.alt" class="spacing_noMargin" draggable="false" loading="lazy">
+                <div class="MediaCard_overlay">
+                  <div class="overlay-info">
+                    <p class="photographer-name">
+                      <i class="bi bi-camera me-2"></i>{{ item.photographer }}
+                    </p>
+                    <div class="photo-actions">
+                      <span class="action-btn"><i class="bi bi-heart"></i></span>
+                      <span class="action-btn"><i class="bi bi-plus-lg"></i></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </article>
+          </div>
+        </div>
+        }
+      </div>
+      }
+    </div>
+
+    <div #infiniteScrollTrigger class="load-trigger"></div>
+
+    <div class="loader-container">
+      @if (isLoading()) {
+      <app-loader></app-loader>
+      }
+    </div>
+  </main>
+</div>

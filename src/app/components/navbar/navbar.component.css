@@ -1,0 +1,54 @@
+.navbar {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.nav-link {
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--color-accent) !important;
+}
+
+.theme-toggle-btn {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 1.1rem;
+}
+
+.theme-toggle-btn:hover {
+  transform: rotate(15deg) scale(1.1);
+  background-color: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 12px rgba(0, 183, 181, 0.2);
+}
+
+.logo-icon i {
+  font-size: 1.4rem;
+}
+
+@media (max-width: 991px) {
+  .navbar-nav {
+    padding: 1rem 0;
+  }
+  .nav-item {
+    width: 100%;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+  .theme-toggle-btn {
+    margin: 0 auto;
+  }
+}

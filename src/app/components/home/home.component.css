@@ -1,0 +1,103 @@
+.home-container {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  transition: all 0.3s ease;
+}
+
+.hero-section {
+  padding: 120px 0 80px;
+  background: radial-gradient(circle at top right, rgba(0, 84, 97, 0.05), transparent 40%),
+              radial-gradient(circle at bottom left, rgba(0, 183, 181, 0.05), transparent 40%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.feature-card {
+  padding: 40px;
+  background: var(--card-bg);
+  color: var(--text-main);
+  border-radius: 30px;
+  border: 1px solid var(--border-color);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border-color: var(--color-accent);
+}
+
+.card-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+  color: #fff;
+}
+
+.gallery-card .card-icon {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+}
+
+.users-card .card-icon {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+}
+
+.feature-card p {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.card-footer-link {
+  margin-top: 25px;
+  font-weight: 600;
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: var(--gradient-main);
+  border: none;
+}
+
+.btn-outline-dark {
+  color: var(--text-main);
+  border-color: var(--text-main);
+}
+
+.btn-outline-dark:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.stat-item h2 {
+  color: var(--color-accent);
+}
+
+.stat-item p {
+  color: var(--text-muted);
+}
+
+.bg-light {
+  background-color: var(--card-bg) !important;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}

@@ -1,0 +1,280 @@
+.users-page {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+}
+
+.page-header {
+  background: radial-gradient(circle at top right, rgba(152, 37, 152, 0.05), transparent 40%),
+              var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Filter Wrapper */
+.filter-wrapper {
+  background: var(--card-bg);
+  border-radius: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  border: 1px solid var(--border-color);
+}
+
+.input-group-custom {
+  position: relative;
+}
+
+.input-group-custom i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-primary);
+  z-index: 10;
+}
+
+
+.form-control-custom, .form-select-custom {
+  width: 100%;
+  padding: 12px 15px 12px 45px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.form-select-custom {
+  padding-left: 15px;
+}
+
+.form-control-custom:focus, .form-select-custom:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  background-color: var(--card-bg);
+  box-shadow: 0 0 0 4px rgba(152, 37, 152, 0.1);
+}
+
+.btn-reset {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #fee2e2;
+  background-color: #fef2f2;
+  color: #ef4444;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-reset:hover:not(:disabled) {
+  background-color: #ef4444;
+  color: #fff;
+}
+
+/* User Card */
+.modern-user-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.modern-user-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-color: var(--color-accent);
+}
+
+.card-image-section {
+  position: relative;
+  background-color: var(--bg-color);
+  height: 200px;
+  overflow: hidden;
+}
+
+.user-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.role-indicator {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.role-indicator.admin {
+  background: var(--color-secondary);
+}
+
+.user-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.meta-item i {
+  color: var(--color-secondary);
+}
+
+.card-action {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-secondary);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Modal Modern Fix */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--modal-overlay);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center; /* This centers the modal horizontally */
+  padding: 20px;
+  z-index: 9999;
+}
+
+.profile-modal-modern {
+  background: var(--card-bg);
+  color: var(--text-main);
+  width: 100%;
+  max-width: 800px;
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+  margin: auto; /* Ensures centering within the flex container */
+  animation: modalIn 0.4s ease-out;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header-modern {
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.modal-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-main);
+}
+
+.modal-profile-info {
+  position: relative;
+  z-index: 1;
+}
+
+.modal-avatar-modern {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  background: #fff;
+  object-fit: cover;
+}
+
+.close-btn-modern {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  color: #fff;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.info-group label {
+  display: block;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 15px;
+  font-size: 1rem;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.info-row i {
+  width: 32px;
+  height: 32px;
+  background: var(--bg-color);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-secondary);
+}
+
+.info-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.info-value {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Bank Card */
+.bank-card-visual {
+  background: var(--gradient-main);
+  border-radius: 20px;
+  padding: 25px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .filter-wrapper {
+    margin: 0 10px;
+  }
+  .profile-modal-modern {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}

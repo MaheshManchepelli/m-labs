@@ -1,1 +1,67 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles & Theme Variables */
+:root {
+  /* --- LIGHT MODE (Your Teal Palette) --- */
+  --bg-color: #F4F4F4;
+  --card-bg: #ffffff;
+  --text-main: #005461;
+  --text-muted: #5a7d82;
+  --color-primary: #005461;   
+  --color-secondary: #018790; 
+  --color-accent: #00B7B5;    
+  --border-color: #e0e7e9;
+  --modal-overlay: rgba(0, 84, 97, 0.6);
+  --nav-bg: #ffffff;
+  
+  --gradient-main: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+}
+
+[data-theme='dark'] {
+  /* --- DARK MODE (Standard Dark) --- */
+  --bg-color: #0f172a;        /* Very dark navy/black */
+  --card-bg: #1e293b;         /* Dark slate */
+  --text-main: #f8fafc;       /* Off white */
+  --text-muted: #94a3b8;      /* Slate gray */
+  --color-primary: #38bdf8;   /* Light blue accent */
+  --color-secondary: #0ea5e9; 
+  --color-accent: #00B7B5;    /* Keep your cyan for consistency or change to blue */
+  --border-color: #334155;
+  --modal-overlay: rgba(0, 0, 0, 0.85);
+  --nav-bg: #1e293b;
+
+  --gradient-main: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Global Button Styles */
+.btn-theme-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  border: none;
+  color: white !important;
+  transition: all 0.3s ease;
+}
+
+.btn-theme-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+}

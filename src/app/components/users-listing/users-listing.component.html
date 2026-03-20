@@ -1,0 +1,213 @@
+<div class="users-page">
+  <!-- Header & Filters -->
+  <header class="page-header py-5">
+    <div class="container text-center">
+      <h2 class="display-4 fw-bold mb-4">Meet Our Team</h2>
+      <p class="text-muted lead mb-5">Browse through our talented members across various departments.</p>
+
+      @if (pageLoaded()) {
+      <div class="filter-wrapper shadow-lg animate-slide-up">
+        <div class="row g-3 p-4 align-items-center">
+          <div class="col-lg-3 col-md-6">
+            <div class="input-group-custom">
+              <i class="bi bi-search"></i>
+              <input type="text" class="form-control-custom" placeholder="Search by name..."
+                (input)="searchQuery.set($any($event.target).value)">
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <select class="form-select-custom" (change)="selectedGender.set($any($event.target).value)">
+              <option value="all">All Genders</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+            </select>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <select class="form-select-custom" (change)="selectedRole.set($any($event.target).value)">
+              <option value="all">All Roles</option>
+              <option value="admin">Admin</option>
+              <option value="user">User</option>
+              <option value="moderator">Moderator</option>
+            </select>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <select class="form-select-custom" (change)="selectedDept.set($any($event.target).value)">
+              @for (dept of departments(); track dept) {
+              <option [value]="dept">{{ dept === 'all' ? 'All Departments' : dept }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="col-lg-2">
+            <button class="btn-reset w-100" (click)="resetFilters()" [disabled]="!hasActiveFilters()">
+              <i class="bi bi-arrow-counterclockwise me-2"></i>Reset
+            </button>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </header>
+
+  <!-- Content Section -->
+  <main class="container py-5">
+    @if (filteredUsers().length === 0 && pageLoaded()) {
+    <div class="empty-state text-center py-5">
+      <i class="bi bi-people display-1 text-muted mb-4 d-block"></i>
+      <h3 class="fw-bold">No results found</h3>
+      <p class="text-muted">Try adjusting your filters or search terms.</p>
+      <button class="btn btn-primary rounded-pill px-4 mt-3" (click)="resetFilters()">
+        Clear All Filters
+      </button>
+    </div>
+    }
+
+    <div class="row g-4">
+      @for (user of filteredUsers(); track user.id) {
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="modern-user-card" (click)="openProfile(user)">
+          <div class="card-image-section">
+            <div class="role-indicator" [class.admin]="user.role === 'admin'">
+              {{ user.role }}
+            </div>
+            <img [src]="user.image" [alt]="user.firstName" class="user-img">
+          </div>
+
+          <div class="card-content-section p-4">
+            <h5 class="fw-bold mb-1">{{ user.firstName }} {{ user.lastName }}</h5>
+            <p class="text-primary small fw-semibold mb-3">{{ user.company.title }}</p>
+
+            <div class="user-meta mb-3">
+              <div class="meta-item">
+                <i class="bi bi-building"></i>
+                <span>{{ user.company.name }}</span>
+              </div>
+              <div class="meta-item">
+                <i class="bi bi-geo-alt"></i>
+                <span>{{ user.address.city }}</span>
+              </div>
+            </div>
+
+            <div class="card-action">
+              <span>View Details</span>
+              <i class="bi bi-arrow-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+
+      <div #infiniteScrollTrigger class="scroll-anchor"></div>
+    </div>
+
+    @if (isLoading()) {
+    <div class="text-center py-5">
+      <app-loader></app-loader>
+    </div>
+    }
+  </main>
+</div>
+
+<!-- Modal - Keeping logic but updating styles in CSS -->
+@if (selectedUser(); as user) {
+<div class="modal-backdrop" (click)="closeModal()">
+  <div class="profile-modal-modern" (click)="$event.stopPropagation()">
+    <button class="close-btn-modern" (click)="closeModal()">
+      <i class="bi bi-x-lg"></i>
+    </button>
+
+    <div class="modal-header-modern">
+      <div class="modal-hero-bg"></div>
+      <div class="modal-profile-info">
+        <img [src]="user.image" class="modal-avatar-modern" [alt]="user.firstName">
+        <h2 class="fw-bold text-white mt-3">{{ user.firstName }} {{ user.lastName }}</h2>
+        <span class="badge bg-light text-dark rounded-pill">{{ user.role }}</span>
+      </div>
+    </div>
+
+    <div class="modal-body-modern p-4">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="info-group">
+            <label>Work Information</label>
+            <div class="info-list">
+              <div class="info-row">
+                <i class="bi bi-briefcase"></i>
+                <div>
+                  <div class="info-label">Title</div>
+                  <div class="info-value">{{ user.company.title }}</div>
+                </div>
+              </div>
+              <div class="info-row">
+                <i class="bi bi-diagram-3"></i>
+                <div>
+                  <div class="info-label">Department</div>
+                  <div class="info-value">{{ user.company.department }}</div>
+                </div>
+              </div>
+              <div class="info-row">
+                <i class="bi bi-building"></i>
+                <div>
+                  <div class="info-label">Company</div>
+                  <div class="info-value">{{ user.company.name }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="info-group">
+            <label>Contact Details</label>
+            <div class="info-list">
+              <div class="info-row">
+                <i class="bi bi-envelope"></i>
+                <div>
+                  <div class="info-label">Email</div>
+                  <div class="info-value text-truncate">{{ user.email }}</div>
+                </div>
+              </div>
+              <div class="info-row">
+                <i class="bi bi-telephone"></i>
+                <div>
+                  <div class="info-label">Phone</div>
+                  <div class="info-value">{{ user.phone }}</div>
+                </div>
+              </div>
+              <div class="info-row">
+                <i class="bi bi-geo-alt"></i>
+                <div>
+                  <div class="info-label">Location</div>
+                  <div class="info-value">{{ user.address.city }}, {{ user.address.state }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bank Card Visual -->
+      <div class="bank-card-visual mt-4">
+        <div class="bank-header">
+          <span>{{ user.bank.cardType }}</span>
+          <i class="bi bi-credit-card-2-front"></i>
+        </div>
+        <div class="bank-number">**** **** **** {{ user.bank.cardNumber.slice(-4) }}</div>
+        <div class="bank-footer">
+          <div>
+            <div class="bank-label">CARD HOLDER</div>
+            <div class="bank-value">{{ user.firstName }} {{ user.lastName }}</div>
+          </div>
+          <div class="text-end">
+            <div class="bank-label">EXPIRES</div>
+            <div class="bank-value">{{ user.bank.cardExpire }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}

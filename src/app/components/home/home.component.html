@@ -1,0 +1,88 @@
+<div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero-section text-center">
+    <div class="container">
+      <h1 class="display-2 fw-bold mb-3 animate-fade-in">
+        Explore <span class="text-gradient">M Labs</span>
+      </h1>
+      <p class="lead text-muted mb-5 animate-slide-up">
+        A modern showcase of photography, user management, and seamless performance.
+      </p>
+      <div class="hero-btns animate-slide-up-delayed">
+        <a routerLink="/gallery" class="btn btn-primary btn-lg rounded-pill px-5 shadow-sm me-3">
+          <i class="bi bi-images me-2"></i>Explore Gallery
+        </a>
+        <a routerLink="/users" class="btn btn-outline-dark btn-lg rounded-pill px-5 shadow-sm">
+          <i class="bi bi-people me-2"></i>Meet the Team
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Cards -->
+  <section class="features-section py-5">
+    <div class="container">
+      <div class="row g-4 justify-content-center">
+        <!-- Gallery Card -->
+        <div class="col-md-5">
+          <div class="feature-card gallery-card" routerLink="/gallery">
+            <div class="card-icon">
+              <i class="bi bi-camera-fill"></i>
+            </div>
+            <h3>Visual Gallery</h3>
+            <p>Dive into a curated collection of stunning photographs from around the world.</p>
+            <div class="card-footer-link">
+              Explore Photos <i class="bi bi-arrow-right"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Users Card -->
+        <div class="col-md-5">
+          <div class="feature-card users-card" routerLink="/users">
+            <div class="card-icon">
+              <i class="bi bi-person-badge-fill"></i>
+            </div>
+            <h3>User Management</h3>
+            <p>Comprehensive user directory with advanced filtering and detailed profiles.</p>
+            <div class="card-footer-link">
+              View Directory <i class="bi bi-arrow-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-banner py-5 bg-light mt-5">
+    <div class="container">
+      <div class="row text-center g-4">
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <h2 class="fw-bold">100+</h2>
+            <p class="text-muted small">Active Users</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <h2 class="fw-bold">1k+</h2>
+            <p class="text-muted small">Curated Photos</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <h2 class="fw-bold">60fps</h2>
+            <p class="text-muted small">Performance</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <h2 class="fw-bold">Angular</h2>
+            <p class="text-muted small">v18 Powered</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
